@@ -1,7 +1,15 @@
-import { useRef, useEffect, useState } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
-import { FaHtml5, FaCss3Alt, FaJs, FaReact, FaDatabase, FaNodeJs, FaGitAlt } from 'react-icons/fa';
-import { SiTypescript } from 'react-icons/si';
+import { useRef, useEffect, useState } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaDatabase,
+  FaNodeJs,
+  FaGitAlt,
+} from "react-icons/fa";
+import { SiTypescript } from "react-icons/si";
 
 interface Skill {
   id: number;
@@ -12,61 +20,61 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { 
-    id: 1, 
-    name: 'HTML', 
-    percentage: 95, 
-    icon: <FaHtml5 className="text-3xl" />, 
-    color: '#e34c26' 
+  {
+    id: 1,
+    name: "HTML",
+    percentage: 95,
+    icon: <FaHtml5 className="text-3xl" />,
+    color: "#e34c26",
   },
-  { 
-    id: 2, 
-    name: 'CSS', 
-    percentage: 90, 
-    icon: <FaCss3Alt className="text-3xl" />, 
-    color: '#264de4' 
+  {
+    id: 2,
+    name: "CSS",
+    percentage: 90,
+    icon: <FaCss3Alt className="text-3xl" />,
+    color: "#264de4",
   },
-  { 
-    id: 3, 
-    name: 'JavaScript', 
-    percentage: 85, 
-    icon: <FaJs className="text-3xl" />, 
-    color: '#f0db4f' 
+  {
+    id: 3,
+    name: "JavaScript",
+    percentage: 85,
+    icon: <FaJs className="text-3xl" />,
+    color: "#f0db4f",
   },
-  { 
-    id: 4, 
-    name: 'React', 
-    percentage: 88, 
-    icon: <FaReact className="text-3xl" />, 
-    color: '#61dafb' 
+  {
+    id: 4,
+    name: "React",
+    percentage: 88,
+    icon: <FaReact className="text-3xl" />,
+    color: "#61dafb",
   },
-  { 
-    id: 5, 
-    name: 'TypeScript', 
-    percentage: 80, 
-    icon: <SiTypescript className="text-3xl" />, 
-    color: '#007acc' 
+  {
+    id: 5,
+    name: "TypeScript",
+    percentage: 80,
+    icon: <SiTypescript className="text-3xl" />,
+    color: "#007acc",
   },
-  { 
-    id: 6, 
-    name: 'Node.js', 
-    percentage: 75, 
-    icon: <FaNodeJs className="text-3xl" />, 
-    color: '#68a063' 
+  {
+    id: 6,
+    name: "Node.js",
+    percentage: 75,
+    icon: <FaNodeJs className="text-3xl" />,
+    color: "#68a063",
   },
-  { 
-    id: 7, 
-    name: 'MySQL', 
-    percentage: 78, 
-    icon: <FaDatabase className="text-3xl" />, 
-    color: '#00758f' 
+  {
+    id: 7,
+    name: "MySQL",
+    percentage: 78,
+    icon: <FaDatabase className="text-3xl" />,
+    color: "#00758f",
   },
-  { 
-    id: 8, 
-    name: 'Git', 
-    percentage: 85, 
-    icon: <FaGitAlt className="text-3xl" />, 
-    color: '#f1502f' 
+  {
+    id: 8,
+    name: "Git",
+    percentage: 85,
+    icon: <FaGitAlt className="text-3xl" />,
+    color: "#f1502f",
   },
 ];
 
@@ -78,7 +86,10 @@ const SkillBar = ({ skill }: { skill: Skill }) => {
 
   useEffect(() => {
     if (isInView) {
-      controls.start({ width: `${skill.percentage}%`, transition: { duration: 1.5, ease: "easeOut" } });
+      controls.start({
+        width: `${skill.percentage}%`,
+        transition: { duration: 1.5, ease: "easeOut" },
+      });
     }
   }, [controls, isInView, skill.percentage]);
 
@@ -105,9 +116,9 @@ const SkillBar = ({ skill }: { skill: Skill }) => {
         <motion.div
           ref={ref}
           className="h-full rounded-full"
-          style={{ 
+          style={{
             backgroundColor: skill.color,
-            boxShadow: hovered ? `0 0 10px ${skill.color}` : 'none'
+            boxShadow: hovered ? `0 0 10px ${skill.color}` : "none",
           }}
           initial={{ width: 0 }}
           animate={controls}
@@ -125,7 +136,7 @@ const Skills = () => {
     const mouseMove = (e: MouseEvent) => {
       setMousePosition({
         x: e.clientX,
-        y: e.clientY
+        y: e.clientY,
       });
     };
 
@@ -140,7 +151,7 @@ const Skills = () => {
     default: {
       x: mousePosition.x - 16,
       y: mousePosition.y - 16,
-      opacity: 0
+      opacity: 0,
     },
     active: {
       height: 80,
@@ -150,9 +161,9 @@ const Skills = () => {
       opacity: 0.2,
       transition: {
         type: "spring",
-        mass: 0.6
-      }
-    }
+        mass: 0.6,
+      },
+    },
   };
 
   const enterSkills = () => setCursorVariant("active");
@@ -166,7 +177,7 @@ const Skills = () => {
         variants={variants}
         animate={cursorVariant}
       />
-      
+
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -180,11 +191,12 @@ const Skills = () => {
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto my-4"></div>
           <p className="max-w-3xl mx-auto text-lg">
-            I've honed my skills in various technologies and tools over the years. Here's an overview of my technical expertise.
+            I've honed my skills in various technologies and tools over the
+            years. Here's an overview of my technical expertise.
           </p>
         </motion.div>
 
-        <div 
+        <div
           className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-2"
           onMouseEnter={enterSkills}
           onMouseLeave={leaveSkills}
@@ -203,8 +215,18 @@ const Skills = () => {
         >
           <h3 className="text-2xl font-bold mb-6">Other Skills & Tools</h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {['Git', 'GitHub', 'VS Code', 'Figma', 'REST API', 'Redux', 'Tailwind CSS', 'Responsive Design', 'GSAP', 'Framer Motion'].map((tool) => (
-              <div 
+            {[
+              "Framer Motion",
+              "Docker",
+              "Next.js",
+              "Jenkins",
+              "REST API",
+              "Redux",
+              "Tailwind CSS",
+              "Ansible",
+              "AWS",
+            ].map((tool) => (
+              <div
                 key={tool}
                 className="px-4 py-2 rounded-full bg-opacity-10 bg-primary text-primary border border-primary hover:bg-primary hover:text-white transition-colors"
               >
@@ -218,4 +240,4 @@ const Skills = () => {
   );
 };
 
-export default Skills; 
+export default Skills;

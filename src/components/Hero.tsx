@@ -1,16 +1,17 @@
-import { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { gsap } from 'gsap';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 // Tech icons for the floating background
 const techIcons = [
-  { id: 1, name: 'HTML', top: '15%', left: '10%', delay: 0 },
-  { id: 2, name: 'CSS', top: '25%', left: '75%', delay: 0.2 },
-  { id: 3, name: 'JS', top: '60%', left: '15%', delay: 0.4 },
-  { id: 4, name: 'React', top: '70%', left: '80%', delay: 0.6 },
-  { id: 5, name: 'MySQL', top: '40%', left: '60%', delay: 0.8 },
-  { id: 6, name: 'DSA', top: '20%', left: '40%', delay: 1 },
+  { id: 1, name: "HTML", top: "15%", left: "10%", delay: 0 },
+  { id: 2, name: "CSS", top: "25%", left: "75%", delay: 0.2 },
+  { id: 3, name: "JS", top: "60%", left: "15%", delay: 0.4 },
+  { id: 4, name: "React", top: "70%", left: "80%", delay: 0.6 },
+  { id: 5, name: "MySQL", top: "40%", left: "60%", delay: 0.8 },
+  { id: 6, name: "DSA", top: "20%", left: "40%", delay: 1 },
+  { id: 6, name: "rishi", top: "80%", left: "40%", delay: 1 },
 ];
 
 const Hero = () => {
@@ -22,7 +23,14 @@ const Hero = () => {
   useEffect(() => {
     if (!typingRef.current) return;
 
-    const texts = ["Front-end Developer", "React Developer", "JavaScript Developer", "Web Designer"];
+    const texts = [
+      "Full-Stack Developer",
+      "Next.js Enthusiast",
+      "Cloud & DevOps Learner",
+      "TypeScript Developer",
+      "Dev-Ops Focused Engineer",
+    ];
+
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -30,15 +38,21 @@ const Hero = () => {
 
     const type = () => {
       const currentText = texts[textIndex];
-      
+
       if (isDeleting) {
         if (typingRef.current) {
-          typingRef.current.textContent = currentText.substring(0, charIndex - 1);
+          typingRef.current.textContent = currentText.substring(
+            0,
+            charIndex - 1
+          );
           charIndex--;
         }
       } else {
         if (typingRef.current) {
-          typingRef.current.textContent = currentText.substring(0, charIndex + 1);
+          typingRef.current.textContent = currentText.substring(
+            0,
+            charIndex + 1
+          );
           charIndex++;
         }
       }
@@ -71,29 +85,33 @@ const Hero = () => {
     if (!containerRef.current) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      const elements = containerRef.current?.querySelectorAll('.floating-icon');
+      const elements = containerRef.current?.querySelectorAll(".floating-icon");
       if (!elements) return;
 
       const x = e.clientX / window.innerWidth;
       const y = e.clientY / window.innerHeight;
 
       elements.forEach((el) => {
-        const speed = parseFloat(el.getAttribute('data-speed') || '0.05');
+        const speed = parseFloat(el.getAttribute("data-speed") || "0.05");
         gsap.to(el, {
           x: (x - 0.5) * 100 * speed,
           y: (y - 0.5) * 100 * speed,
           duration: 1,
-          ease: 'power2.out',
+          ease: "power2.out",
         });
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" ref={containerRef}>
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      ref={containerRef}
+    >
       {/* Floating tech icons */}
       {techIcons.map((icon) => (
         <motion.div
@@ -104,14 +122,14 @@ const Hero = () => {
             left: icon.left,
           }}
           initial={{ opacity: 0, y: 20 }}
-          animate={{ 
-            opacity: 0.2, 
+          animate={{
+            opacity: 0.2,
             y: 0,
-            x: 0
+            x: 0,
           }}
-          transition={{ 
-            delay: icon.delay, 
-            duration: 0.5
+          transition={{
+            delay: icon.delay,
+            duration: 0.5,
           }}
           data-speed={0.05 + Math.random() * 0.1}
         >
@@ -128,11 +146,18 @@ const Hero = () => {
           className="mb-6"
         >
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-2">
-            Hello, I'm <span className="gradient-text hover:scale-105 inline-block transition-transform">Jitender Giri</span> 👋
+            Hello, I'm{" "}
+            <span className="gradient-text hover:scale-105 inline-block transition-transform">
+              Rishi Gupta
+            </span>{" "}
+            👋
           </h1>
           <div className="text-xl sm:text-2xl md:text-3xl my-6 h-10">
             A <span ref={typingRef} className="text-primary font-medium"></span>
-            <span ref={cursorRef} className="animate-typing-cursor">|</span> 🚀
+            <span ref={cursorRef} className="animate-typing-cursor">
+              |
+            </span>{" "}
+            🚀
           </div>
         </motion.div>
 
@@ -142,7 +167,9 @@ const Hero = () => {
           transition={{ delay: 0.3, duration: 0.8 }}
           className="text-lg md:text-xl max-w-2xl mx-auto mb-8"
         >
-          I build beautiful, interactive, and responsive web applications with modern technologies.
+          I specialize in building fast, responsive, and user-friendly web
+          applications with cutting-edge tools like React, TypeScript, and
+          AWS—ensuring clean code and great UX.
         </motion.p>
 
         <motion.div
@@ -151,13 +178,13 @@ const Hero = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="flex justify-center gap-4"
         >
-          <a 
+          <a
             href="#contact"
             className="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-full font-medium transition-colors shadow-lg hover:shadow-xl"
           >
             Get in Touch
           </a>
-          <a 
+          <a
             href="#projects"
             className="border-2 border-primary hover:bg-primary hover:text-white px-6 py-3 rounded-full font-medium transition-all"
           >
@@ -171,27 +198,27 @@ const Hero = () => {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="flex justify-center gap-6 mt-10"
         >
-          <a 
-            href="https://github.com" 
-            target="_blank" 
+          <a
+            href="https://github.com/guptaRishi00"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-2xl hover:text-primary transition-colors"
             aria-label="GitHub Profile"
           >
             <FaGithub />
           </a>
-          <a 
-            href="https://linkedin.com" 
-            target="_blank" 
+          <a
+            href="https://www.linkedin.com/in/rishi-gupta-669591273/"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-2xl hover:text-primary transition-colors"
             aria-label="LinkedIn Profile"
           >
             <FaLinkedin />
           </a>
-          <a 
-            href="https://twitter.com" 
-            target="_blank" 
+          <a
+            href="https://twitter.com"
+            target="_blank"
             rel="noopener noreferrer"
             className="text-2xl hover:text-primary transition-colors"
             aria-label="Twitter Profile"
@@ -210,12 +237,12 @@ const Hero = () => {
       >
         <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
           <motion.div
-            animate={{ 
+            animate={{
               y: [0, 12, 0],
             }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 1.5 
+            transition={{
+              repeat: Infinity,
+              duration: 1.5,
             }}
             className="w-2 h-2 bg-primary rounded-full mt-2"
           />
@@ -226,4 +253,4 @@ const Hero = () => {
   );
 };
 
-export default Hero; 
+export default Hero;

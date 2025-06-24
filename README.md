@@ -1,4 +1,4 @@
-# 🚀 JRishi Gupta – Interactive Developer Portfolio
+# 🚀 Rishi Gupta – Interactive Developer Portfolio
 
 An interactive and highly engaging personal portfolio showcasing expertise in HTML, CSS, JavaScript, ReactJS, DBMS, DSA, and MySQL. Built with modern web technologies including React, TypeScript, Tailwind CSS, Framer Motion, and GSAP.
 
